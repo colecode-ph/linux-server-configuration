@@ -77,7 +77,7 @@ To                         Action      From
 80 (v6)                    ALLOW       Anywhere (v6)             
 123 (v6)                   ALLOW       Anywhere (v6)
 ```
-## Configured the PostgreSQL
+## Configured the PostgreSQL server
 I created a database named catalog, as well as a user catalog, with the appropriate grant permissions
 ```
 postgres=# CREATE DATABASE catalog;
