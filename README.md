@@ -18,7 +18,7 @@ The URL is: `http://52.77.247.143.xip.io/`
 
 # Summary of Software Installed on the Server
 
-## Software Installed via `sudo apt-get install`:
+## Software installed via `sudo apt-get install`:
 First I ran `sudo apt-get update && apt-get upgrade` and `sudo apt-get dist-upgrade` to bring the server up to date. 
 
 Then I installed the following packages:
@@ -28,7 +28,7 @@ Then I installed the following packages:
 * postgresql
 * python-pip
 
-## Software Installed via `sudo pip install`:
+## Software installed via `sudo pip install`:
 First I ran `pip install --upgrade pip` to get to the latest version. Then I installed the following packages:
 
 * requests
@@ -42,17 +42,28 @@ First I ran `pip install --upgrade pip` to get to the latest version. Then I ins
 
 # Summary of Configuration Changes Made
 
-## Configure the Firewall
+## Configure the firewall
 
 Configure the firewall to only allow access to ports 22, 2200, 80, and 123. (We will then remove port 22 access once we change the SSH config to only allow access on port 2200)
 
-* `ufw allow 22`
-* `ufw allow 2200`
-* `ufw allow 123`
-* `ufw allow 80`
-* `ufw enable`
+* `sudo ufw allow 22`
+* `sudo ufw allow 2200`
+* `sudo ufw allow 123`
+* `sudo ufw allow 80`
+* `sudo ufw enable`
 
 ## Configure SSH access to port 22 and disable root login
+
+Edit the ssh server configuration file: `sudo nano /etc/ssh/sshd_config`
+
+Make sure the following lines are present:
+
+* `Port 2200` - remove or comment the reference to port 22 also
+* `PermitRootLogon no`
+* `ClientAliveInterval 50` - add client interval to prevent Lightsail automatic disconnection of session
+* `PermitRootLogin no` - prohibit root login - comment or remove any conflicting lines as well
+
+`
 
 
 
