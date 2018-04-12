@@ -64,8 +64,8 @@ Added the following:
 Once I saved and restarted the sshd service, I then blocked access to port 22: `sudo ufw delete allow 22`
 
 View the current firewall ruleset:
-
-`ubuntu@ip-172-26-0-195:~$ sudo ufw status
+```
+ubuntu@ip-172-26-0-195:~$ sudo ufw status
 Status: active
 
 To                         Action      From
@@ -75,8 +75,8 @@ To                         Action      From
 123                        ALLOW       Anywhere                  
 2200 (v6)                  ALLOW       Anywhere (v6)             
 80 (v6)                    ALLOW       Anywhere (v6)             
-123 (v6)                   ALLOW       Anywhere (v6)`
-
+123 (v6)                   ALLOW       Anywhere (v6)
+```
 
 
 `
