@@ -54,7 +54,7 @@ Configured the firewall to only allow access to ports 22, 2200, 80, and 123. (re
 
 ## Configured proper SSH access
 
-Edited the ssh server configuration file: `sudo nano /etc/ssh/sshd_config`
+Edited the ssh server configuration file: `# sudo nano /etc/ssh/sshd_config`
 
 Added the following:
 
