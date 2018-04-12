@@ -181,3 +181,8 @@ CLIENT_ID = json.loads(
     open('/home/ubuntu/bookcatalog/client_secrets.json', 'r').read())['web']['client_id']
 ```
 
+## Third party resources
+When I ran into problems, my main goto resources were the Udacity Forums, Stack Overflow, and Server Fault:
+* [https://discussions.udacity.com/](https://discussions.udacity.com/)
+* [https://stackoverflow.com/](https://stackoverflow.com/)
+* [https://serverfault.com/](https://serverfault.com/)
