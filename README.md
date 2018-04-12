@@ -9,4 +9,5 @@ The application hosted is actually one of the previous Udacity projects, in this
 # IP Address and SSH Port
 
 The IP address of the application is: `52.77.247.143`
+
 The SSH port is: `2200`
