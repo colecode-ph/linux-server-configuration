@@ -33,6 +33,7 @@ First I ran `pip install --upgrade pip` to get to the latest version. Then I ins
 * requests
 * sqlalchemy
 * psycopg2
+* psycopg2-binary - (Added later to eliminate a warning in the apache log which made it hard to read) 
 * oauth2client
 * flask
 * flask-httpauth
