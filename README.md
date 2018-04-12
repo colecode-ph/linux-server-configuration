@@ -40,11 +40,19 @@ First I ran `pip install --upgrade pip` to get to the latest version. Then I ins
 * flask-sqlalchemy
 * flask-bootstrap
 
-
-
-
-
-
-
-
 # Summary of Configuration Changes Made
+
+## Configure the Firewall
+
+Configure the firewall to only allow access to ports 22, 2200, 80, and 123. (We will then remove port 22 access once we change the SSH config to only allow access on port 2200)
+
+* `ufw allow 22`
+* `ufw allow 2200`
+* `ufw allow 123`
+* `ufw allow 80`
+* `ufw enable`
+
+## Configure SSH access to port 22 and disable root login
+
+
+
