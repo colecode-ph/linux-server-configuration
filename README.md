@@ -149,4 +149,32 @@ sys.path.insert(0,"/home/ubuntu/bookcatalog/")
 from catalog import app as application
 application.secret_key = '####'
 ```
+## Configured ssh access for user "grader"
+* added the grader user: `# adduser grader`
+* enabled sudo access for grader user: `# usermod -aG sudo grader`
+* created ssh keypair for grader on my local machine: `# ssh-keygen`
+* I then logged on to the server and created an `authorized_keys` file and added the public key there, as well as the appropriate permissions:
+```
+grader@ip-172-26-0-195:~$ touch .ssh/authorized_keys
+grader@ip-172-26-0-195:~$ nano .ssh/authorized_keys
+grader@ip-172-26-0-195:~$ cat .ssh/authorized_keys
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDcl75aPaEh7vhFgRya6izRswABHlQiRMs2M8a1zfppyZykp6YxilVf4mdo+LxnD3UyEsTECjLd1qURu3HolhumNx/ryF3q/sFcFn9N6vKQQg1y+11Q1ZACCm1FZFXdDR/UAIcl2OKj5nva4Y39+IlI6MJ4IZ0qPpsyPHUpqwMP3SpEOieiYBRJgNBDGuB1hZaIaaRqwtStMcseMb5G2u8SHKIOMtF0lWwk6ykbhcUsfc2JMoqjwANlB2H8fSrvjB548okq+XScH/XmCqm3abRF08wNlWdrr0NJWTPCOMkPpXvYc/wWTkabhtN4kke8rWuLaCu4tmC09Fp6FwHf04Ff grader@beastmode
+grader@ip-172-26-0-195:~$ chmod 700 .ssh
+grader@ip-172-26-0-195:~$ chmod 644 .ssh/authorized_keys
+```
+* (the private key is provided to the grader during the submission process)
+* I also ran `visudo` to change a line in the config so the grader can elevate to sudo without being prompted for the password: `%sudo   ALL=(ALL:ALL) NOPASSWD:ALL`
+
+## Miscellaneous configuration changes
+I had to add the appropriate URL settings to both the Google Developers Console, and to the client_secrets.json file:
+```
+http://52.77.247.143.xip.io
+http://52.77.247.143.xip.io/login
+http://52.77.247.143.xip.io/gconnect
+```
+I also had to modify any references to the client_secrets.json file in the application code, to reflect the full path of that file. For example:
+```
+CLIENT_ID = json.loads(
+    open('/home/ubuntu/bookcatalog/client_secrets.json', 'r').read())['web']['client_id']
+```
 
