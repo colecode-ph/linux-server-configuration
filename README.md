@@ -77,13 +77,37 @@ To                         Action      From
 80 (v6)                    ALLOW       Anywhere (v6)             
 123 (v6)                   ALLOW       Anywhere (v6)
 ```
+### Configured the PostgreSQL server
 
 
-`
 
 
+## Configured Apache Web Server
+Since there's only going to be one application running on this server, I used the `000-default.conf` file for configuration.
 
-`
+I added the appropriate information for document root and directory:
+```
+DocumentRoot /home/ubuntu/bookcatalog
+        <Directory />
+            Options FollowSymLinks
+            AllowOverride None
+       </Directory>
+       <Directory /home/ubuntu/bookcatalog/>
+            Options Indexes FollowSymLinks MultiViews
+            AllowOverride None
+            Require all granted
+        </Directory>
+```
+I also added a line for the WSGI file: ` WSGIScriptAlias / /home/ubuntu/bookcatalog/myapp.wsgi`
 
+I also changed the ownership of the application files and directories to www-data:www-data using the chown command.
 
+The myapp.wsgi file was also populated with the appropriate lines to make it work:
+```
+import sys
+sys.path.insert(0,"/home/ubuntu/bookcatalog/")
+
+from catalog import app as application
+application.secret_key = '####'
+```
 
