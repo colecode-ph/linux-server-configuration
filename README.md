@@ -62,9 +62,11 @@ Added the following:
 * `PermitRootLogon no` - completely disallow root logon - comment or remove any conflicting lines as well
 * `ClientAliveInterval 50` - add client interval to prevent Lightsail automatic disconnection of session
 
-Once I saved and restarted the sshd service, I then blocked access to port 22: `sudo ufw delete allow 22`
+I then blocked access to port 22: `# sudo ufw delete allow 22`
 
-View the current firewall ruleset:
+Then I restarted the sshd service, and logged back in via port 2200.
+
+A view of the current firewall ruleset:
 ```
 ubuntu@ip-172-26-0-195:~$ sudo ufw status
 Status: active
