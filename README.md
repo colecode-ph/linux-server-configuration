@@ -1,8 +1,7 @@
 # Linux Server Configuration
 Configuring an Ubuntu 16 LTS server to host a Flask application via Apache web server.
 
-This is the sixth and final project for the Udacity Full Stack Web Developer Nanodegree. The
- goal is to use Amazon Lightsail to deploy a functional web application on the public internet. The objective is to learn how to configure a Linux web server in a secure and functional fashion.
+This is the sixth and final project for the Udacity Full Stack Web Developer Nanodegree. The goal is to use Amazon Lightsail to deploy a functional web application on the public internet. The objective is to learn how to configure a Linux web server in a secure and functional fashion.
  
 The application hosted is actually one of the previous Udacity projects, in this case a book catalog CRUD application built with the python Flask application framework, and the PostgreSQL database server.
 
@@ -42,9 +41,9 @@ First I ran `pip install --upgrade pip` to get to the latest version. Then I ins
 
 # Summary of Configuration Changes Made
 
-## Configure the firewall
+## Configured the firewall
 
-Configure the firewall to only allow access to ports 22, 2200, 80, and 123. (We will then remove port 22 access once we change the SSH config to only allow access on port 2200)
+Configured the firewall to only allow access to ports 22, 2200, 80, and 123. (remove port 22 access once we change the SSH config to only allow access on port 2200)
 
 * `sudo ufw allow 22`
 * `sudo ufw allow 2200`
@@ -52,16 +51,37 @@ Configure the firewall to only allow access to ports 22, 2200, 80, and 123. (We 
 * `sudo ufw allow 80`
 * `sudo ufw enable`
 
-## Configure SSH access to port 22 and disable root login
+## Configured proper SSH access
 
-Edit the ssh server configuration file: `sudo nano /etc/ssh/sshd_config`
+Edited the ssh server configuration file: `sudo nano /etc/ssh/sshd_config`
 
-Make sure the following lines are present:
+Added the following:
 
-* `Port 2200` - remove or comment the reference to port 22 also
-* `PermitRootLogon no`
+* `Port 2200` - changes ssh port access to 2200 - remove or comment the reference to port 22 also
+* `PermitRootLogon no` - completely disallow root logon - comment or remove any conflicting lines as well
 * `ClientAliveInterval 50` - add client interval to prevent Lightsail automatic disconnection of session
-* `PermitRootLogin no` - prohibit root login - comment or remove any conflicting lines as well
+
+Once I saved and restarted the sshd service, I then blocked access to port 22: `sudo ufw delete allow 22`
+
+View the current firewall ruleset:
+
+`ubuntu@ip-172-26-0-195:~$ sudo ufw status
+Status: active
+
+To                         Action      From
+--                         ------      ----
+2200                       ALLOW       Anywhere                  
+80                         ALLOW       Anywhere                  
+123                        ALLOW       Anywhere                  
+2200 (v6)                  ALLOW       Anywhere (v6)             
+80 (v6)                    ALLOW       Anywhere (v6)             
+123 (v6)                   ALLOW       Anywhere (v6)`
+
+
+
+`
+
+
 
 `
 
