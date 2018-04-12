@@ -84,7 +84,7 @@ postgres=# CREATE DATABASE catalog;
 CREATE DATABASE
 postgres=# CREATE USER catalog;
 CREATE ROLE
-postgres=# ALTER ROLE catalog WITH PASSWORD 'p@55w0rd';
+postgres=# ALTER ROLE catalog WITH PASSWORD '####';
 ALTER ROLE
 postgres=# GRANT ALL PRIVILEGES ON DATABASE catalog TO catalog;
 GRANT
@@ -102,10 +102,24 @@ postgres-# \l
            |          |          |             |             | postgres=CTc/postgres
 (4 rows)
 ```
-
-
-
-
+I then created the tables and populated the database by executing the appropriate python files:
+```
+ubuntu@ip-172-26-0-195:~/bookcatalog$ python db_setup.py
+ubuntu@ip-172-26-0-195:~/bookcatalog$ python populator.py
+```
+I double checked to make sure the tables had been added:
+```
+postgres=# \c catalog
+You are now connected to database "catalog" as user "postgres".
+catalog=# \dt
+          List of relations
+ Schema |   Name   | Type  |  Owner  
+--------+----------+-------+---------
+ public | book     | table | catalog
+ public | category | table | catalog
+ public | user     | table | catalog
+(3 rows)
+```
 
 ## Configured Apache Web Server
 Since there's only going to be one application running on this server, I used the `000-default.conf` file for configuration.
