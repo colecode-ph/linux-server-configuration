@@ -13,7 +13,7 @@ The SSH port is: `2200`
 
 # The URL of the Hosted Application
 
-The URL is: `http://52.77.247.143.xip.io/`
+The URL is: [http://52.77.247.143.xip.io/](http://52.77.247.143.xip.io/)
 
 # Summary of Software Installed on the Server
 
