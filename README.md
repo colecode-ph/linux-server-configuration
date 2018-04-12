@@ -77,7 +77,32 @@ To                         Action      From
 80 (v6)                    ALLOW       Anywhere (v6)             
 123 (v6)                   ALLOW       Anywhere (v6)
 ```
-### Configured the PostgreSQL server
+## Configured the PostgreSQL
+I created a database named catalog, as well as a user catalog, with the appropriate grant permissions
+```
+postgres=# CREATE DATABASE catalog;
+CREATE DATABASE
+postgres=# CREATE USER catalog;
+CREATE ROLE
+postgres=# ALTER ROLE catalog WITH PASSWORD 'p@55w0rd';
+ALTER ROLE
+postgres=# GRANT ALL PRIVILEGES ON DATABASE catalog TO catalog;
+GRANT
+postgres-# \l
+                                  List of databases
+   Name    |  Owner   | Encoding |   Collate   |    Ctype    |   Access privileges   
+-----------+----------+----------+-------------+-------------+-----------------------
+ catalog   | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =Tc/postgres         +
+           |          |          |             |             | postgres=CTc/postgres+
+           |          |          |             |             | catalog=CTc/postgres
+ postgres  | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ template0 | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+           |          |          |             |             | postgres=CTc/postgres
+ template1 | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+           |          |          |             |             | postgres=CTc/postgres
+(4 rows)
+```
+
 
 
 
