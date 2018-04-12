@@ -7,13 +7,13 @@ The application hosted is actually one of the previous Udacity projects, in this
 
 # IP Address and SSH Port
 
-The IP address of the application is: `52.77.247.143`
+The IP address of the application is: `13.250.103.155`
 
 The SSH port is: `2200`
 
 # The URL of the Hosted Application
 
-The URL is: [http://52.77.247.143.xip.io/](http://52.77.247.143.xip.io/)
+The URL is: [http://13.250.103.155.xip.io/](http://13.250.103.155.xip.io/)
 
 # Summary of Software Installed on the Server
 
@@ -171,9 +171,9 @@ grader@ip-172-26-0-195:~$ chmod 644 .ssh/authorized_keys
 ## Miscellaneous configuration changes
 I had to add the appropriate URL settings to both the Google Developers Console, and to the client_secrets.json file:
 ```
-http://52.77.247.143.xip.io
-http://52.77.247.143.xip.io/login
-http://52.77.247.143.xip.io/gconnect
+http://13.250.103.155.xip.io
+http://13.250.103.155.xip.io/login
+http://13.250.103.155.xip.io/gconnect
 ```
 I also had to modify any references to the client_secrets.json file in the application code, to reflect the full path of that file. For example:
 ```
