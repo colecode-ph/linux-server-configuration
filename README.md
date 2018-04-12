@@ -20,9 +20,9 @@ The URL is: `http://52.77.247.143.xip.io/`
 
 ## Software Installed via `sudo apt-get install`:
 
-*apache2
-*libapache2-mod-wsgi
-*python-pip
+* apache2
+* libapache2-mod-wsgi
+* python-pip
 
 ## Software Installed via `sudo pip install`:
 
