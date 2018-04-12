@@ -19,6 +19,9 @@ The URL is: `http://52.77.247.143.xip.io/`
 # Summary of Software Installed on the Server
 
 ## Software Installed via `sudo apt-get install`:
+first I ran `sudo apt-get update && apt-get upgrade`
+
+Then I ran `sudo apt-get dist-upgrade` to bring the server up to date. Then I installed the following packages:
 
 * apache2
 * libapache2-mod-wsgi
